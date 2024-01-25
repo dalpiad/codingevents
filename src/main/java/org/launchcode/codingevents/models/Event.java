@@ -32,7 +32,16 @@ public class Event {
     @FutureOrPresent(message="Date cannot be listed in the past.")
     private LocalDate eventDate;
 
-    public Event(String name, String description, String contactEmail, String location, boolean registrationRequired, int numberOfAttendees, LocalDate eventDate) {
+    private EventType type;
+
+    public Event(String name,
+                 String description,
+                 String contactEmail,
+                 String location,
+                 boolean registrationRequired,
+                 int numberOfAttendees,
+                 LocalDate eventDate,
+                 EventType type) {
         this();
         this.name = name;
         this.description = description;
@@ -41,6 +50,7 @@ public class Event {
         this.registrationRequired = registrationRequired;
         this.numberOfAttendees = numberOfAttendees;
         this.eventDate = eventDate;
+        this.type = type;
     }
 
     public Event() {
@@ -53,6 +63,14 @@ public class Event {
 
     public String getLocation() {
         return location;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     public void setLocation(String location) {
