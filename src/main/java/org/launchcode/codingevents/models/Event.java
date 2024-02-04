@@ -1,10 +1,13 @@
 package org.launchcode.codingevents.models;
 
-import jakarta.validation.constraints.*;
-
-import java.time.LocalDate;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
+/**
+ * Created by Chris Bay
+ */
 public class Event {
 
     private int id;
@@ -21,35 +24,13 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    @NotBlank(message="Location cannot be left blank.")
-    private String location;
-    @AssertTrue(message="Registration must be true.")
-    private boolean registrationRequired;
-
-    @Positive(message="Number of attendees must at 1 or more.")
-    private int numberOfAttendees;
-
-    @FutureOrPresent(message="Date cannot be listed in the past.")
-    private LocalDate eventDate;
-
     private EventType type;
 
-    public Event(String name,
-                 String description,
-                 String contactEmail,
-                 String location,
-                 boolean registrationRequired,
-                 int numberOfAttendees,
-                 LocalDate eventDate,
-                 EventType type) {
+    public Event(String name, String description, String contactEmail, EventType type) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
-        this.location = location;
-        this.registrationRequired = registrationRequired;
-        this.numberOfAttendees = numberOfAttendees;
-        this.eventDate = eventDate;
         this.type = type;
     }
 
@@ -57,48 +38,9 @@ public class Event {
         this.id = nextId;
         nextId++;
     }
+
     public String getName() {
         return name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public EventType getType() {
-        return type;
-    }
-
-    public void setType(EventType type) {
-        this.type = type;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public boolean isRegistrationRequired() {
-        return registrationRequired;
-    }
-
-    public void setRegistrationRequired(boolean registrationRequired) {
-        this.registrationRequired = registrationRequired;
-    }
-
-    public int getNumberOfAttendees() {
-        return numberOfAttendees;
-    }
-
-    public void setNumberOfAttendees(int numberOfAttendees) {
-        this.numberOfAttendees = numberOfAttendees;
-    }
-
-    public LocalDate getEventDate() {
-        return eventDate;
-    }
-
-    public void setEventDate(LocalDate eventDate) {
-        this.eventDate = eventDate;
     }
 
     public void setName(String name) {
@@ -119,6 +61,14 @@ public class Event {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     public int getId() {
