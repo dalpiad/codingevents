@@ -2,13 +2,6 @@ body {
   font-size: 18px;
 }
 
-.center {
-  margin: auto;
-  width: 60%;
-  padding: 10px;
-  text-align: center;
-}
-
 .error {
   color: red;
 }
